@@ -15,18 +15,8 @@
         "images/nen-3-big.png"
     ];
 
-    var grid_arr = [
-        'grid_1',
-        'grid_2',
-        'grid_3',
-        'grid_4',
-        'grid_5',
-        'grid_6',
-        'grid_7'
-    ];
 
-
-    var filled_areas = new Array();
+    // var filled_areas = new Array();
 
     $(document).ready( function () {
 
@@ -75,26 +65,7 @@
 
     } );
 
-    function check_overlap(area) {
-        for (var i = 0; i < filled_areas.length; i++) {
-            console.log( filled_areas );
-            var check_area = filled_areas[i];
 
-            var bottom1 = area.y + area.height;
-            var bottom2 = check_area.y + check_area.height;
-            var top1 = area.y;
-            var top2 = check_area.y;
-            var left1 = area.x;
-            var left2 = check_area.x;
-            var right1 = area.x + area.width;
-            var right2 = check_area.x + check_area.width;
-            if (bottom1 < top2 || top1 > bottom2 || right1 < left2 || left1 > right2) {
-                continue;
-            }
-            return true;
-        }
-        return false;
-    }
 
     function elements (e_random, e_time_delay, point ) {
 
@@ -106,7 +77,7 @@
             var divsize = 200,
                 posx = ( Math.random() * ( play_cake.width() - divsize ) ).toFixed(),
                 posy = ( Math.random() * ( play_cake.height() - divsize ) ).toFixed(),
-                random_class = grid_arr[Math.floor(Math.random()*myArray.length)],
+                // random_class = grid_arr[Math.floor(Math.random()*myArray.length)],
                 random_myarr = Math.floor(Math.random()*myArray.length),
                 randomItem = myArray[random_myarr];
 
@@ -137,58 +108,7 @@
 
     }
 
-    function test() {
-        var containerW = 700;
-        var containerH = 600;
-        var positions = [];
 
-        $('.candle-item').each(function() {
-
-            var coords = {
-                w: $(this).outerWidth(true),
-                h: $(this).outerHeight(true)
-            };
-
-            var success = false;
-
-            while (!success)
-            {
-                coords.x = ( Math.random() * ( play_cake.width() - coords.w ) ).toFixed();
-                coords.y = ( Math.random() * ( play_cake.height() - coords.h ) ).toFixed();
-                // coords.x = parseInt(Math.random() * (play_cake.width()-coords.w));
-                // coords.y = parseInt(Math.random() * (play_cake.height()-coords.h));
-
-
-                success = true;
-                $.each(positions, function(){
-
-                    if (
-                        coords.x <= (this.x + this.w) &&
-                        (coords.x + coords.w) >= this.x &&
-                        coords.y <= (this.y + this.h) &&
-                        (coords.y + coords.h) >= this.y
-                    )
-
-                    // if ( success < 50000 )
-                    // {
-                    //     return false;
-                    // }
-
-                    {
-                        success = false;
-                    }
-                });
-            }
-
-            positions.push(coords);
-
-            $(this).css({
-                top: coords.y + 'px',
-                left: coords.x + 'px'
-            });
-        });
-
-    }
 
     function makeDiv() {
 
@@ -257,5 +177,79 @@
         });
 
     }
+
+    // function test() {
+    //     var containerW = 700;
+    //     var containerH = 600;
+    //     var positions = [];
+    //
+    //     $('.candle-item').each(function() {
+    //
+    //         var coords = {
+    //             w: $(this).outerWidth(true),
+    //             h: $(this).outerHeight(true)
+    //         };
+    //
+    //         var success = false;
+    //
+    //         while (!success)
+    //         {
+    //             coords.x = ( Math.random() * ( play_cake.width() - coords.w ) ).toFixed();
+    //             coords.y = ( Math.random() * ( play_cake.height() - coords.h ) ).toFixed();
+    //             // coords.x = parseInt(Math.random() * (play_cake.width()-coords.w));
+    //             // coords.y = parseInt(Math.random() * (play_cake.height()-coords.h));
+    //
+    //
+    //             success = true;
+    //             $.each(positions, function(){
+    //
+    //                 if (
+    //                     coords.x <= (this.x + this.w) &&
+    //                     (coords.x + coords.w) >= this.x &&
+    //                     coords.y <= (this.y + this.h) &&
+    //                     (coords.y + coords.h) >= this.y
+    //                 )
+    //
+    //                 // if ( success < 50000 )
+    //                 // {
+    //                 //     return false;
+    //                 // }
+    //
+    //                 {
+    //                     success = false;
+    //                 }
+    //             });
+    //         }
+    //
+    //         positions.push(coords);
+    //
+    //         $(this).css({
+    //             top: coords.y + 'px',
+    //             left: coords.x + 'px'
+    //         });
+    //     });
+    //
+    // }
+
+    // function check_overlap(area) {
+    //     for (var i = 0; i < filled_areas.length; i++) {
+    //         console.log( filled_areas );
+    //         var check_area = filled_areas[i];
+    //
+    //         var bottom1 = area.y + area.height;
+    //         var bottom2 = check_area.y + check_area.height;
+    //         var top1 = area.y;
+    //         var top2 = check_area.y;
+    //         var left1 = area.x;
+    //         var left2 = check_area.x;
+    //         var right1 = area.x + area.width;
+    //         var right2 = check_area.x + check_area.width;
+    //         if (bottom1 < top2 || top1 > bottom2 || right1 < left2 || left1 > right2) {
+    //             continue;
+    //         }
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
 })(jQuery);
