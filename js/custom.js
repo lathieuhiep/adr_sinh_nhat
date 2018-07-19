@@ -2,10 +2,13 @@
 
     "use strict";
 
-    var counter = 0,
+    var seconds = 60,
+        counter = 0,
         random = 0,
         time_delay = 0,
         point = 0,
+        point_total = 0,
+        play_total_score = 0,
         play_cake = $('.adr-birthday-play__cake-candle');
 
 
@@ -15,27 +18,29 @@
         "images/nen-3-big.png"
     ];
 
-
     // var filled_areas = new Array();
 
     $(document).ready( function () {
 
-        var sec = 60;
-        var timer = setInterval( function() {
-
-            $('#countdown-time-play span').text(--sec);
-
-            if ( sec === 0 ) {
-                clearInterval (timer );
-            }
-
-        }, 1000 );
+        count_time_play();
 
         makeDiv();
 
         // test();
 
         click_point_total();
+
+        var popup_play_btn_continue =   $( '.popup-play-btn-continue' );
+        popup_play_btn_continue.on( 'click', function () {
+
+            $( '.adr-birthday-play__popup' ).fadeOut();
+            $('#play-point').text(0);
+            point_total = 0;
+            $('#countdown-time-play span').text(seconds);
+            count_time_play();
+            makeDiv();
+
+        } );
 
 
 
@@ -66,6 +71,21 @@
     } );
 
 
+    /* Function count time */
+    function count_time_play() {
+
+        var sec = seconds,
+            timer = setInterval( function() {
+
+            $('#countdown-time-play span').text(--sec);
+
+            if ( sec === 0 ) {
+                clearInterval (timer );
+            }
+
+        }, 1000 );
+
+    }
 
     function elements (e_random, e_time_delay, point ) {
 
@@ -107,8 +127,6 @@
         );
 
     }
-
-
 
     function makeDiv() {
 
@@ -159,7 +177,6 @@
     /* function point total */
     function click_point_total() {
 
-        var point_total = 0;
         $(document).on('click', '.candle-item', function() {
 
             var has_active =  $(this).hasClass( 'active' );
@@ -167,10 +184,17 @@
             if ( has_active === false ) {
 
                 $(this).addClass( 'active' );
-                var point_item =   $(this).data('point');
+
+                var point_item =   $(this).data('point'),
+                    play_total_score_get = $( '#play-total-score' );
+
+                play_total_score = play_total_score_get.text();
 
                 point_total = parseInt( point_total ) + parseInt( point_item );
+                play_total_score = parseInt( play_total_score ) + parseInt( point_item );
+
                 $('#play-point').text( point_total );
+                play_total_score_get.text( play_total_score );
 
             }
 
