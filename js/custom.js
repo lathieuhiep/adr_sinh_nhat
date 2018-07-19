@@ -9,6 +9,8 @@
         point = 0,
         point_total = 0,
         play_total_score = 0,
+        turn_point_arr = [],
+        play_turn = $( '#play-turn' ),
         play_cake = $('.adr-birthday-play__cake-candle');
 
 
@@ -33,12 +35,27 @@
         var popup_play_btn_continue =   $( '.popup-play-btn-continue' );
         popup_play_btn_continue.on( 'click', function () {
 
-            $( '.adr-birthday-play__popup' ).fadeOut();
-            $('#play-point').text(0);
-            point_total = 0;
-            $('#countdown-time-play span').text(seconds);
-            count_time_play();
-            makeDiv();
+            var play_turn_value = play_turn.text();
+
+            if ( play_turn_value > 0 ) {
+
+                $( '.adr-birthday-play__popup' ).fadeOut();
+
+                $('#play-point').text(0);
+
+                // Push turn point
+                turn_point_arr.push(point_total);
+
+                // Reset point total
+                point_total = 0;
+
+                $('#countdown-time-play span').text(seconds);
+
+                count_time_play();
+
+                makeDiv();
+
+            }
 
         } );
 
@@ -165,11 +182,21 @@
         }
 
         if ( get_time_count !== 0 ) {
+
             setTimeout( makeDiv, time_delay );
+
         }else {
-            var play_point_lv = $('#play-point').text();
-            $( '.popup-play-point' ).text( play_point_lv );
-            $( '.adr-birthday-play__popup' ).fadeIn(500);
+
+            var play_point_lv = $('#play-point').text(),
+                play_turn_value = play_turn.text();
+
+                if ( play_turn_value > 0 ) {
+                    play_turn.text(--play_turn_value);
+
+                }
+
+                $( '.popup-play-point' ).text( play_point_lv );
+                $( '.adr-birthday-play__popup' ).fadeIn(500);
         }
 
     }
