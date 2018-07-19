@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Play Birthday</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Bootstrap css v3.2.0 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Style min adr -->
+    <link rel="stylesheet" href="css/style.min.adr.css">
+
+    <!-- Style css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Play -->
+<div class="adr-birthday-play">
+    <div class="container">
+        <div class="adr-birthday__tool adr-birthday-play__tool">
+            <div class="adr-birthday-play__tool-logo">
+                <img src="images/bk-thap-nen-play.png" alt="thắp nến">
+            </div>
+
+            <div class="adr-birthday-play__tool-frame">
+                <div class="adr-birthday-play__tool-frame-item">
+                    <span class="text">Điểm</span>
+
+                    <span id="play-point" class="sub-text sub-text-point">0</span>
+                </div>
+
+                <div class="adr-birthday-play__tool-frame-item">
+                    <span class="text">Lượt chơi</span>
+
+                    <span id="play-turn" class="sub-text">2</span>
+                </div>
+
+                <div class="adr-birthday-play__tool-frame-item">
+                    <span class="text">Tổng điểm</span>
+
+                    <span id="play-total-score" class="sub-text">10.248</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="adr-birthday-play__cake">
+            <div class="adr-birthday-play__cake-candle">
+                <!--<div class="candle-item candle-item__0" data-point="1">-->
+                    <!--<div class="candle-fire"><img src="images/fire-candle.png" alt="fire"></div>-->
+
+                    <!--<img class="candle-item__img" src="images/nen-box-big.png" alt="candle">-->
+                <!--</div>-->
+
+                <!--<div class="candle-item candle-item__1" data-point="1">-->
+                    <!--<div class="candle-fire"><img src="images/fire-candle.png" alt="fire"></div>-->
+
+                    <!--<img class="candle-item__img" src="images/nen-sao-big.png" alt="candle">-->
+                <!--</div>-->
+
+                <!--<div class="candle-item candle-item__2" data-point="1">-->
+                    <!--<div class="candle-fire"><img src="images/fire-candle.png" alt="fire"></div>-->
+
+                    <!--<img class="candle-item__img" src="images/nen-3-big.png" alt="candle">-->
+                <!--</div>-->
+
+                <!--<div class="candle-item candle-item__2" data-point="1">-->
+                    <!--<div class="candle-fire"><img src="images/fire-candle.png" alt="fire"></div>-->
+
+                    <!--<img class="candle-item__img" src="images/nen-3-big.png" alt="candle">-->
+                <!--</div>-->
+
+                <!--<div class="candle-item candle-item__0" data-point="1">-->
+                    <!--<div class="candle-fire"><img src="images/fire-candle.png" alt="fire"></div>-->
+
+                    <!--<img class="candle-item__img" src="images/nen-box-big.png" alt="candle">-->
+                <!--</div>-->
+
+                <!--<div class="candle-item candle-item__1" data-point="1">-->
+                    <!--<div class="candle-fire"><img src="images/fire-candle.png" alt="fire"></div>-->
+
+                    <!--<img class="candle-item__img" src="images/nen-sao-big.png" alt="candle">-->
+                <!--</div>-->
+
+                <!--<div class="candle-item candle-item__2" data-point="1">-->
+                    <!--<div class="candle-fire"><img src="images/fire-candle.png" alt="fire"></div>-->
+
+                    <!--<img class="candle-item__img" src="images/nen-3-big.png" alt="candle">-->
+                <!--</div>-->
+
+                <!--<div class="candle-item candle-item__2" data-point="1">-->
+                    <!--<div class="candle-fire"><img src="images/fire-candle.png" alt="fire"></div>-->
+
+                    <!--<img class="candle-item__img" src="images/nen-3-big.png" alt="candle">-->
+                <!--</div>-->
+            </div>
+
+            <div id="countdown-time-play">
+                <span>60</span>s
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="adr-birthday-play__popup">
+        <div class="adr-birthday-play__popup-inner">
+            <div class="adr-birthday-play__popup-over">
+                <div class="adr-birthday-play__popup-box">
+                    <div class="adr-birthday-play__popup-point">
+                        <span class="popup-play-text">Bạn đạt</span>
+                        <span class="popup-play-point">0</span>
+                    </div>
+
+                    <div class="adr-birthday-play__popup-bottom">
+                        <span class="popup-play-btn-over popup-play-btn">
+                            Kết Thúc
+                        </span>
+
+                        <span class="popup-play-btn-continue popup-play-btn">
+                            Chơi Tiếp
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- lib jQuery v3.3.1 -->
+<script src="js/jquery-3.3.1.min.js"></script>
+
+<!-- Bootstrap jquery v3.2.0 -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Custom js -->
+<script src="js/custom.js"></script>
+
+</body>
+</html>
