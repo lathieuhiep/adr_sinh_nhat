@@ -11,8 +11,7 @@
         play_total_score = 0,
         turn_point_arr = [],
         play_turn = $( '#play-turn' ),
-        play_cake = $('.adr-birthday-play__cake-candle');
-
+        play_cake = $('.cake-candle-main');
 
     var myArray = [
         "images/nen-box-big.png",
@@ -20,15 +19,11 @@
         "images/nen-3-big.png"
     ];
 
-    // var filled_areas = new Array();
-
     $(document).ready( function () {
 
         count_time_play();
 
         makeDiv();
-
-        // test();
 
         click_point_total();
 
@@ -60,33 +55,7 @@
         } );
 
 
-
-        // $('.candle-item').each(function() {
-        //     var min_x = 0;
-        //
-        //     var min_y = 0;
-        //
-        //     var rand_x=0;
-        //     var rand_y=0;
-        //     var area;
-        //
-        //     // random_lv1      =   Math.floor(Math.random() * (8 - 6 + 1) + 6),
-        //     do {
-        //         var max_x = play_cake.width();
-        //         var max_y = play_cake.height();
-        //         rand_x = Math.floor( Math.random() * ( max_x - min_x + 1 ) + min_x );
-        //         rand_y = Math.floor( Math.random() * ( max_y - min_y + 1 ) + min_y );
-        //         area = {x: rand_x, y: rand_y, width: $(this).width(), height: $(this).height()};
-        //     } while(check_overlap(area));
-        //
-        //     filled_areas.push(area);
-        //
-        //     $(this).css({left:rand_x, top: rand_y});
-        // });
-
-
     } );
-
 
     /* Function count time */
     function count_time_play() {
@@ -106,39 +75,29 @@
 
     function elements (e_random, e_time_delay, point ) {
 
-        var elements = $(),
-            test_x_y  = [];
+        var elements = $();
 
         for( var x = 0; x < e_random; x++ ) {
 
             var divsize = 200,
                 posx = ( Math.random() * ( play_cake.width() - divsize ) ).toFixed(),
                 posy = ( Math.random() * ( play_cake.height() - divsize ) ).toFixed(),
-                // random_class = grid_arr[Math.floor(Math.random()*myArray.length)],
                 random_myarr = Math.floor(Math.random()*myArray.length),
                 randomItem = myArray[random_myarr];
 
-                var $newdiv = $('<div class="candle-item candle-item__'+random_myarr+'" data-point="'+point+'"><div class="candle-fire"><img src="images/fire-candle.png" alt="fire"></div><img class="candle-item__img" src="'+randomItem+'" alt="candle"></div>').css({
-                    'left': posx + 'px',
-                    'top': posy + 'px'
-                });
-
-            // var $newdiv = $('<div class="candle-item candle-item__'+random_myarr+'" data-point="'+point+'"><div class="candle-fire"><img src="images/fire-candle.png" alt="fire"></div><img class="candle-item__img" src="'+randomItem+'" alt="candle"></div>');
-
+            var $newdiv = $('<div class="candle-item candle-item__'+random_myarr+'" data-point="'+point+'"><div class="candle-fire"><div class="flame"><div class="shadows"></div><div class="top"></div><div class="middle"></div></div></div><img class="candle-item__img" src="'+randomItem+'" alt="candle"></div>');
 
             elements = elements.add($newdiv);
 
-            // $('.adr-birthday-play__cake-candle').append($newdiv);
-
         }
 
-        $('.adr-birthday-play__cake-candle').append(elements);
+        play_cake.append(elements);
 
-        // setTimeout(test, 2);
+        setTimeout(setRandomPos($(".candle-item")), 2);
 
         setTimeout( function() {
 
-            $('.adr-birthday-play__cake-candle').empty();
+            play_cake.empty();
 
             }, e_time_delay
         );
@@ -229,78 +188,83 @@
 
     }
 
-    // function test() {
-    //     var containerW = 700;
-    //     var containerH = 600;
-    //     var positions = [];
-    //
-    //     $('.candle-item').each(function() {
-    //
-    //         var coords = {
-    //             w: $(this).outerWidth(true),
-    //             h: $(this).outerHeight(true)
-    //         };
-    //
-    //         var success = false;
-    //
-    //         while (!success)
-    //         {
-    //             coords.x = ( Math.random() * ( play_cake.width() - coords.w ) ).toFixed();
-    //             coords.y = ( Math.random() * ( play_cake.height() - coords.h ) ).toFixed();
-    //             // coords.x = parseInt(Math.random() * (play_cake.width()-coords.w));
-    //             // coords.y = parseInt(Math.random() * (play_cake.height()-coords.h));
-    //
-    //
-    //             success = true;
-    //             $.each(positions, function(){
-    //
-    //                 if (
-    //                     coords.x <= (this.x + this.w) &&
-    //                     (coords.x + coords.w) >= this.x &&
-    //                     coords.y <= (this.y + this.h) &&
-    //                     (coords.y + coords.h) >= this.y
-    //                 )
-    //
-    //                 // if ( success < 50000 )
-    //                 // {
-    //                 //     return false;
-    //                 // }
-    //
-    //                 {
-    //                     success = false;
-    //                 }
-    //             });
-    //         }
-    //
-    //         positions.push(coords);
-    //
-    //         $(this).css({
-    //             top: coords.y + 'px',
-    //             left: coords.x + 'px'
-    //         });
-    //     });
-    //
-    // }
+    var boxDims = [];
+    var notAllowboxDims = [];
+    var offset = 0;
+    var offset_height = -50;
 
-    // function check_overlap(area) {
-    //     for (var i = 0; i < filled_areas.length; i++) {
-    //         console.log( filled_areas );
-    //         var check_area = filled_areas[i];
-    //
-    //         var bottom1 = area.y + area.height;
-    //         var bottom2 = check_area.y + check_area.height;
-    //         var top1 = area.y;
-    //         var top2 = check_area.y;
-    //         var left1 = area.x;
-    //         var left2 = check_area.x;
-    //         var right1 = area.x + area.width;
-    //         var right2 = check_area.x + check_area.width;
-    //         if (bottom1 < top2 || top1 > bottom2 || right1 < left2 || left1 > right2) {
-    //             continue;
-    //         }
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    var mainBoxWidth = play_cake.width();
+    var mainBoxHeight = play_cake.height();
+    var itemWidth = 180;
+    var itemHeight = 180;
+
+    if (window.matchMedia('(max-width: 991px)').matches) {
+        itemWidth = 70;
+        itemHeight = 70;
+        offset_height = -15;
+    }
+
+    function deleteBoxPosition(position){
+        for(var i = boxDims.length - 1; i >= 0; i--) {
+            if(boxDims[i] === position) {
+                boxDims.splice(i, 1);
+            }
+        }
+    }
+
+    function randomInRange(min, max) {
+        return(Math.floor((Math.random() * (max - min) + 1) + min));
+    }
+
+    var stt = 0, position= 0, fixLeft = 0, fixTop = 0, validatePosition = false;
+
+    function setRandomPos(elements) {
+
+        $( window ).on( 'load resize', function () {
+
+            var $width_screen =  $(window).width();
+
+            mainBoxWidth = play_cake.width();
+            mainBoxHeight = play_cake.height();
+
+            if ( $width_screen < 991 ) {
+                itemWidth = 70;
+                itemHeight = 70;
+                offset_height = -15;
+            }
+
+        } );
+
+        var columns = Math.round(mainBoxWidth/(itemWidth + offset));
+        var rows = Math.round(mainBoxHeight/(itemHeight + offset));
+        var totalBoxs = columns * rows;
+
+        boxDims = [];
+        for( var i=0; i<totalBoxs;i++ ){
+            boxDims.push(i);
+        }
+
+        elements.each(function(){
+
+            stt = randomInRange(0, boxDims.length -1);
+            position = boxDims[stt];
+            $(this).attr('data-position', position);
+            deleteBoxPosition(position);
+            fixLeft = play_cake.offset().left + ((position-1) % columns) * (itemWidth + offset);
+            fixTop = play_cake.offset().top + Math.floor((position-1)/columns) * (itemHeight + offset_height);
+            $(this).offset({
+                left: fixLeft,
+                top: fixTop
+            });
+            var $c =parseInt( $(this).attr('data-position') );
+
+            if (  $c === 5 || $c === 6 || $c === 7 || $c === 8 || $c === 9 || $c === 10 || $c === 11 ) {
+
+                $(this).css( 'z-index', 2 );
+            }
+
+        });
+
+    }
 
 })(jQuery);

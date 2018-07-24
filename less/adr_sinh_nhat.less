@@ -96,10 +96,17 @@
   .justify-content(center);
 
   .tool-birthday-btn-global {
+    width: 200px;
+    line-height: 58px;
     margin-right: 30px;
 
     &:last-child {
       margin-right: 0;
+    }
+    a {
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
     }
   }
   .adr-birthday__tool-btn {
@@ -107,33 +114,23 @@
     font-size: 22px;
     text-transform: uppercase;
     letter-spacing: -1.1px;
-    width: 200px;
-    height: 58px;
-    line-height: 58px;
     text-align: center;
-    background-image: url("images/bk-btn-tool.png");
-    background-size: cover;
-    background-position: top center;
 
     a {
       display: block;
       color: #fdf6c2;
       text-shadow: 0 2px #462710;
+      background-image: url("images/bk-btn-tool.png");
     }
   }
   .adr-birthday__tool-btn-facebook {
-    width: 200px;
-    height: 58px;
-    line-height: 58px;
-    background-image: url("images/bk-btn-tool-facebook.png");
-    background-size: cover;
-    background-position: top center;
-
     a {
       .flexbox();
       .align-items(center);
+      background-image: url("images/bk-btn-tool-facebook.png");
     }
     .tool-btn-facebook-image {
+      display: inline-block;
       padding: 0 12px 0 35px;
     }
     .tool-btn-facebook-text {
@@ -153,6 +150,10 @@
 
   .adr-birthday__form-image {
     display: inline-block;
+
+    img {
+      max-width: 100%;
+    }
   }
   .adr-birthday__form-register {
     width: 30%;
@@ -229,7 +230,6 @@
 .adr-birthday-play__tool-frame {
   .flexbox();
   .flex(1);
-  .justify-content(flex-end);
 }
 .adr-birthday-play__tool-frame-item {
   margin-right: 65px;
@@ -284,6 +284,14 @@
   .flex(1);
   width: 100%;
   margin-bottom: 110px;
+  top: 25px;
+
+  .cake-candle-main {
+    position: relative;
+    width: 80%;
+    min-height: 100%;
+    margin: 0 auto;
+  }
 
   .adr-birthday-play__cake-row {
     position: relative;
@@ -332,14 +340,16 @@
     position: absolute;
     cursor: pointer;
     text-align: center;
-    //width: 150px;
-    //height: 150px;
-    //-webkit-animation: leaves 0.2s linear 1;
-    //animation: leaves 0.2s linear 1;
+    width: 180px;
+    height: 180px;
+    z-index: 1;
+    -webkit-animation: leaves 0.2s linear 1;
+    animation: leaves 0.2s linear 1;
 
     .candle-fire {
       position: absolute;
       opacity: 0;
+      left: 50%;
       visibility: hidden;
       .transition(all 0.4s ease-in-out);
       .transform(scale(0.5));
@@ -353,20 +363,20 @@
     }
     &.candle-item__0 {
       .candle-fire {
-        top: -140px;
-        left: 15px;
+        top: -10px;
+        margin-left: -5px;
       }
     }
     &.candle-item__1 {
       .candle-fire {
-        top: -145px;
-        left: -7px;
+        top: -20px;
+        margin-left: -5px;
       }
     }
     &.candle-item__2 {
       .candle-fire {
-        top: -140px;
-        left: -22px;
+        top: -20px;
+        margin-left: 7px;
       }
     }
     .candle-item__img {
@@ -381,7 +391,7 @@
   width: 240px;
   height: 90px;
   line-height: 75px;
-  background-image: url(images/bk-btn-tham-gia.png);
+  background-image: url(images/bk-btn-time.png);
   background-size: cover;
   background-position: top center;
   font-family: 'UTM Kabel KT';
@@ -422,17 +432,62 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.78);
+  z-index: 10;
 
   .adr-birthday-play__popup-inner {
     width: 100%;
     height: 100%;
-    .flexbox();
-    .justify-content(center);
-    .align-items(center);
   }
-  .adr-birthday-play__popup-over {
+  .adr-birthday-play__popup--group {
     position: relative;
     width: 25%;
+  }
+  .adr-birthday-play__popup--giftcode {
+    background-color: #ffffff;
+    margin-bottom: 40px;
+    padding: 15px;
+
+    &:after {
+      position: absolute;
+      content: '';
+      top: -12px;
+      left: -12px;
+      right: -12px;
+      bottom: -12px;
+      background-image: url(images/bk-border-popup-gift-code.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
+    .popup-play-text-desc {
+      color: #4b3b18;
+      font-size: 13px;
+      margin: 10px auto 0;
+      width: 85%;
+    }
+  }
+  .popup-play-giftcode-box__text {
+    background-color: #ddd6c8;
+    padding: 10px;
+    border-radius: 10px;
+
+    span {
+      display: block;
+
+      &.popup-play-text-giftcode {
+        color: #4b3b18;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      &.popup-play-text-code {
+        font-family: 'UTM Kabel KT';
+        color: #a37a12;
+        font-size: 36px;
+        line-height: 1em;
+      }
+    }
+  }
+  .adr-birthday-play__popup-over {
     background-color: #4b3b18;
     text-align: center;
 
@@ -481,14 +536,721 @@
     font-size: 22px;
     text-transform: uppercase;
     letter-spacing: -1.1px;
-    width: 200px;
+    width: 165px;
     height: 64px;
-    line-height: 64px;
+    line-height: 55px;
     text-align: center;
-    background-image: url(images/bk-btn-tool.png);
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: top center;
     color: #fdf6c2;
     text-shadow: 0 2px #462710;
+    background-repeat: no-repeat;
+
+    &.popup-play-btn-over {
+      background-image: url(images/bk-btn-tool.png);
+    }
+    &.popup-play-btn-continue {
+      background-image: url(images/bk-btn-play-continue.png);
+    }
+  }
+}
+.btn-popup-play-facebook {
+  width: 200px;
+  height: 66px;
+  line-height: 58px;
+  margin-top: 25px;
+  background-image: url("images/bk-btn-tool-facebook.png");
+  background-size: cover;
+  background-position: top center;
+
+  a {
+    .flexbox();
+    .align-items(center);
+  }
+  .tool-btn-facebook-image {
+    padding: 0 12px 0 35px;
+  }
+  .tool-btn-facebook-text {
+    display: inline-block;
+    font-family: 'UTM Kabel KT';
+    color: #d4daef;
+    font-size: 22px;
+    text-shadow: 0 2px #4c517f;
+    text-transform: uppercase;
+    padding-left: 25px;
+  }
+}
+
+@flame-height: 30px;
+@wick-height: 50px;
+@orange: #ff6a00;
+@orange-yellow: #ff9224;
+@dark: #2c2b39;
+@blue-dark: #30537d;
+@blue-light: #76daff;
+@yellow: #fbf348;
+@yellow-grey: #58523a;
+
+.flame{
+  width: 10px;
+  height: @flame-height;
+  margin: 0 auto;
+  position: relative;
+  animation: move 3s infinite, move-left 3s infinite;
+  transform-origin: 50% 90%;
+  .top{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    border-top-left-radius: 500%;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 500%;
+    border-bottom-right-radius: 50px;
+    transform: skewY(-10deg);
+    box-shadow:
+    0 0 0 3px white,
+      0 -20px 1px 4px white,
+      0 -25px 2px 3px gold,
+      0 -30px 5px 4px @orange,  //top
+    0 0 150px 10px @orange, //global
+      0 -10px 2px 4px white,
+      0 -5px 3px 3px white;
+    //animation: flame-up 4s infinite;
+  }
+  .shadows{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 5px 20px 15px gold, 0 0 100px 20px #ff6a00;
+  }
+  .bottom{
+    transform: scale(0.9);
+    position: absolute;
+    bottom: 6px;
+    left: 9px;
+    width: 1px;
+    height: 8px;
+    border-radius: 1%;
+    background: #fbe7b8;
+    box-shadow:
+    0 6px 10px 12px rgba(251,231,184, 0.3), //dark blue
+    0 0 4px 8px #fbe7b8,
+      0 -12px 10px 8px rgba(255,106,0, 0.5),  //orange
+    0 5px 7px 12px #fbe7b8,
+      0 -3px 10px 12px #fbe7b8,
+      5px -10px 10px 5px red,
+      0 -15px 10px 10px gold,
+      5px -25px 10px 5px gold,
+    0 2px 5px 10px @blue-dark,
+      0 -2px 2px 14px @blue-light,
+    0 2px 10px 12px @blue-light;
+  }
+}
+
+@keyframes move{
+  0%{ transform: skewX(2deg) skewY(5eg)}
+  50%{ transform: skewX(-2deg) skewY(-0deg)}
+  100%{ transform: skewX(2deg) skewY(5deg)}
+}
+@keyframes move-left{
+  50%{transform: skewX(3deg);}
+}
+@keyframes flame-up{
+  50% { box-shadow:
+  0 0 0 3px white,
+    0 -38px 1px 2px white,
+    0 -41px 2px 3px gold,
+    0 -50px 5px 4px @orange,  //orange top
+  0 0px 150px 10px @orange, //orange global
+    0 -10px 2px 4px white,
+    0 -5px 3px 3px white;
+  }
+}
+@keyframes blink{
+  50% {opacity: 0.95;}
+}
+
+/* Responsive */
+
+@media ( max-width: 1600px ) {
+
+  .adr-birthday-play__popup {
+    .adr-birthday-play__popup-over,
+    .adr-birthday-play__popup--giftcode {
+      &:after {
+        left: -8px;
+        right: -8px;
+        top: -8px;
+        bottom: -8px;
+      }
+    }
+  }
+
+}
+
+@media ( min-width: 992px ) and ( max-width: 1600px ) {
+
+  .adr-birthday-play__popup {
+    .adr-birthday-play__popup--group {
+      width: 40%;
+    }
+  }
+
+}
+
+@media ( min-width: 1240px ) and ( max-width: 1365px ) {
+
+  .adr-birthday-play__tool-frame-item {
+    margin-right: 30px;
+  }
+  .adr-birthday-play__tool {
+    &.adr-birthday__tool {
+      padding-right: 30px;
+    }
+  }
+
+}
+
+@media ( min-width: 992px ) and ( max-width: 1239px ) {
+
+  .adr-birthday-play__tool {
+    &.adr-birthday__tool {
+      padding-left: 230px;
+      padding-right: 30px;
+    }
+    .adr-birthday-play__tool-logo {
+      left: -5px;
+
+      img {
+        max-width: 75%;
+      }
+    }
+  }
+  .adr-birthday-play__tool-frame-item {
+    margin-right: 15px;
+
+    span {
+      &.text {
+        font-size: 20px;
+      }
+    }
+  }
+
+}
+
+@media ( min-width: 992px ) and ( max-width: 1200px ) {
+
+  .adr-birthday-play__cake-candle {
+    .candle-item {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  .adr-birthday-play__cake-candle {
+    top: 50px;
+  }
+
+}
+
+@media ( max-width: 991px ) {
+
+  .adr-birthday__tool {
+    .tool-birthday-btn-global {
+      margin-right: 0;
+
+      a {
+        background-position: center 4px;
+      }
+    }
+  }
+  .adr-birthday-play__cake {
+    background-image: url("images/bk-cake-mobile-play.png");
+    width: 100%;
+    background-size: 100% 100%;
+  }
+  .adr-birthday-play__cake-candle {
+    .candle-item {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+}
+
+@media ( min-width: 768px ) {
+
+  .adr-birthday-play__tool-frame {
+    .justify-content(flex-end);
+  }
+  .adr-birthday-play__popup-inner {
+    .flexbox();
+    .justify-content(center);
+    .align-items(center);
+    .flex-direction-column();
+  }
+
+}
+
+@media ( min-width: 768px ) and ( max-width: 991px ) {
+
+  .adr-birthday__tool {
+    .tool-birthday-btn-global {
+      a {
+        background-size: 165px 100%;
+      }
+    }
+    .adr-birthday__tool-btn {
+      font-size: 17px;
+    }
+    .adr-birthday__tool-btn-facebook {
+      .tool-btn-facebook-image {
+        padding-left: 0;
+      }
+      .tool-btn-facebook-text {
+        font-size: 18px;
+        padding-left: 15px;
+      }
+    }
+  }
+
+  .adr-birthday__form {
+    .adr-birthday__form-register {
+      width: 70%;
+    }
+  }
+
+  .adr-birthday-play__tool {
+    &.adr-birthday__tool {
+      padding-left: 180px;
+      padding-right: 15px;
+    }
+    .adr-birthday-play__tool-logo {
+      left: 0;
+
+      img {
+        max-width: 60%;
+      }
+    }
+  }
+  .adr-birthday-play__tool-frame-item {
+    margin-right: 10px;
+
+    span {
+      &.text {
+        font-size: 18px;
+      }
+      &.sub-text {
+        font-size: 25px;
+        padding: 5px 20px;
+
+        &.sub-text-point {
+          padding: 5px 20px;
+        }
+      }
+    }
+  }
+
+  .adr-birthday-play__popup {
+    .adr-birthday-play__popup--group {
+      width: 50%;
+    }
+    .adr-birthday-play__popup-point {
+      span {
+        &.popup-play-point {
+          font-size: 60px;
+        }
+      }
+    }
+    .popup-play-giftcode-box__text {
+      span {
+        &.popup-play-text-code {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+  .adr-birthday-play__cake-candle {
+    top: 90px;
+  }
+
+
+}
+
+@media ( max-width: 767px ) {
+
+  .adr-birthday-login,
+  .adr-birthday-play {
+    .container {
+      padding: 0;
+    }
+  }
+  .adr-birthday__tool {
+    width: 100%;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    &.adr-birthday__tool {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .adr-birthday__form {
+    .adr-birthday__form-register {
+      width: 90%;
+
+      .adr-birthday__form-submit {
+        background-size: 100% 100%;
+        width: 180px;
+        height: 70px;
+        line-height: 60px;
+
+        .btn-submit {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+
+  .adr-birthday-play__tool-frame {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .adr-birthday-play__tool-frame-item {
+    margin-right: 15px;
+    .flex-direction-column();
+
+    span{
+      &.text {
+        font-size: 16px;
+        margin: 0 0 5px;
+      }
+      &.sub-text {
+        font-size: 24px;
+        padding: 5px 20px;
+
+        &.sub-text-point {
+          padding: 5px 15px;
+        }
+      }
+    }
+  }
+  .adr-birthday-play__cake-candle {
+    .candle-item {
+      &.candle-item__0 {
+        .candle-fire {
+          top: -5px;
+          margin-left: -2px;
+        }
+      }
+      &.candle-item__1 {
+        .candle-fire {
+          top: -10px;
+          margin-left: -2px;
+        }
+      }
+      &.candle-item__2 {
+        .candle-fire {
+          top: -8px;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  .flame {
+    height: 10px;
+    width: 5px;
+
+    .shadows {
+      top: -15px;
+      height: 10px
+    }
+  }
+
+  .adr-birthday-play__popup {
+    .adr-birthday-play__popup--group {
+      margin: 0 auto 30px;
+    }
+  }
+
+  .adr-birthday-play__popup-inner {
+    min-height: 100vh;
+    overflow-y: scroll;
+    padding-top: 50px;
+  }
+  .adr-birthday-play__popup {
+    .adr-birthday-play__popup-point {
+      span {
+        &.popup-play-text {
+          font-size: 16px;
+        }
+        &.popup-play-point {
+          font-size: 30px;
+        }
+      }
+    }
+    .popup-play-btn {
+      background-size: 100% 100%;
+      width: 125px;
+      font-size: 16px;
+      height: 55px;
+      line-height: 50px;
+    }
+    .adr-birthday-play__popup-bottom {
+      padding: 5px 5px 0 5px;
+    }
+    .popup-play-giftcode-box__text {
+      span {
+        &.popup-play-text-giftcode {
+          font-size: 13px;
+        }
+        &.popup-play-text-code {
+          font-size: 20px;
+        }
+      }
+    }
+    .adr-birthday-play__popup--giftcode {
+      .popup-play-text-desc {
+        font-size: 12px;
+        width: 100%;
+      }
+    }
+  }
+
+  .btn-popup-play-facebook {
+    background-size: 100% 100%;
+    height: 60px;
+    line-height: 50px;
+    margin: 0 auto;
+
+    .tool-btn-facebook-text {
+      font-size: 18px;
+    }
+    .tool-btn-facebook-image {
+      img {
+        max-width: 70%;
+      }
+    }
+  }
+  .adr-birthday-play__cake-candle {
+    top: 80px;
+  }
+
+}
+
+@media ( min-width: 481px ) and ( max-width: 991px ) {
+
+  .adr-birthday__tool {
+    .tool-birthday-btn-global {
+      width: 25%;
+    }
+    .adr-birthday__tool-btn-facebook {
+      .tool-btn-facebook-image {
+        img {
+          width: 70%;
+        }
+      }
+    }
+    .adr-birthday__tool-btn-facebook {
+      a {
+        .justify-content(center);
+      }
+    }
+  }
+
+}
+
+@media ( min-width: 481px ) and ( max-width: 767px ) {
+
+  .adr-birthday__tool {
+    padding: 0 5px 7px;
+
+
+    .adr-birthday__tool-btn {
+      font-size: 15px;
+    }
+    .adr-birthday__tool-btn-facebook {
+      .tool-btn-facebook-image {
+        padding: 0 5px 0 0;
+      }
+      .tool-btn-facebook-text {
+        font-size: 15px;
+        padding-left: 10px;
+      }
+    }
+  }
+  .adr-birthday-play__popup {
+    .adr-birthday-play__popup--group {
+      width: 60%;
+    }
+  }
+
+}
+
+@media ( min-width: 580px ) and ( max-width: 767px ) {
+
+  .adr-birthday__tool {
+    .tool-birthday-btn-global {
+      a {
+        background-size: 140px 100%
+      }
+    }
+  }
+
+}
+
+@media ( min-width: 391px ) and ( max-width: 767px ) {
+
+  .adr-birthday-play__tool-frame {
+    padding-right: 10px;
+    .justify-content(flex-end);
+  }
+  .adr-birthday-play__tool {
+    .adr-birthday-play__tool-logo {
+      left: -5px;
+
+      img {
+        max-width: 55%;
+      }
+    }
+  }
+
+}
+
+@media ( min-width: 481px ) and ( max-width: 579px ) {
+
+  .adr-birthday__tool {
+    .tool-birthday-btn-global {
+      a {
+        background-size: 125px 100%
+      }
+    }
+  }
+
+}
+
+@media ( max-width: 480px ) {
+
+  .adr-birthday__tool {
+    padding: 0 15px 7px;
+
+    .tool-birthday-btn-global {
+      width: 50%;
+      a {
+        background-size: 100% 100%;
+      }
+    }
+    .adr-birthday__tool-btn-facebook {
+      .tool-btn-facebook-image {
+        img {
+          max-width: 80%;
+        }
+      }
+    }
+  }
+
+  .adr-birthday-play__cake {
+    height: 380px;
+  }
+  #countdown-time-play {
+    width: 120px;
+    height: 60px;
+    font-size: 40px;
+    line-height: 48px;
+    background-size: 100% 100%;
+  }
+  .adr-birthday-play__popup {
+    .adr-birthday-play__popup--group {
+      width: 90%;
+    }
+  }
+  .adr-birthday-play__cake-candle {
+    top: 40px;
+  }
+
+  .adr-birthday-play__cake-candle {
+    .candle-item {
+      width: 75px;
+      height: 75px;
+    }
+    .candle-item.candle-item__2 {
+      .candle-fire {
+        margin-left: 3px;
+      }
+    }
+  }
+
+}
+
+@media ( min-width: 391px ) and ( max-width: 480px ) {
+
+  .adr-birthday__tool {
+    .adr-birthday__tool-btn {
+      font-size: 18px;
+    }
+    .tool-birthday-btn-global {
+      line-height: 70px;
+      font-size: 18px;
+    }
+  }
+  .adr-birthday-play__tool {
+    .adr-birthday-play__tool-logo {
+      img {
+        max-width: 40%;
+      }
+    }
+  }
+
+}
+
+@media ( max-width: 390px ) {
+
+  .adr-birthday__tool {
+    .adr-birthday__tool-btn {
+      font-size: 15px;
+    }
+    .tool-birthday-btn-global {
+      line-height: 65px;
+    }
+  }
+
+  .adr-birthday-play__tool-logo {
+    display: none;
+  }
+  .adr-birthday-play__tool-frame {
+    .justify-content(center);
+  }
+
+}
+
+@media ( min-width: 360px ) and ( max-width: 480px ) {
+
+  .adr-birthday__tool {
+    .adr-birthday__tool-btn-facebook {
+      .tool-btn-facebook-text {
+        font-size: 20px;
+        padding-left: 15px;
+      }
+    }
+  }
+
+}
+
+@media ( max-width: 359px ) {
+  .adr-birthday__tool {
+    .adr-birthday__tool-btn-facebook {
+      .tool-btn-facebook-text {
+        font-size: 15px;
+        padding-left: 10px;
+      }
+    }
   }
 }
